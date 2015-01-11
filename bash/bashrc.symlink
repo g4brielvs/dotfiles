@@ -1,0 +1,160 @@
+# =============================================================== #
+#
+# PERSONAL $HOME/.bashrc FILE for bash-3.0 (or later)
+# author: Gabriel Vicente
+#
+# Last modified: Sun Jan 11 01:04:47 BRT 2015
+
+#  This file is normally read by interactive shells only.
+#+ Here is the place to define your aliases, functions and
+#+ other interactive features like your prompt.
+#
+#  The choice of colors was done for a shell with a dark background
+#+ (white on black), and this is usually also suited for pure text-mode
+#+ consoles (no X server available). If you use a white background,
+#+ you'll have to do some other choices for readability.
+#
+#  This bashrc file is a bit overcrowded. Remember, it is just just 
+#+ an example. Tailor it to your needs.
+#
+# =============================================================== #
+#
+#  ALIASES AND FUNCTIONS
+#
+#  Arguably, some functions defined here are quite big.
+#  If you want to make this file smaller, these functions can
+#  be converted into scripts and removed from here.
+#
+# =============================================================== #
+
+alias rm='rm -i'
+alias rmf='rm -rf'
+alias cp='cp -i'
+alias mv='mv -i'
+
+## a quick way to get out of current directory ##
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+ 
+ ## Shortcuts
+ alias codes='cd ~/Dropbox/Coding'
+ alias gaia='ssh gaia@192.168.0.4'
+
+#-------------------------------------------------------------
+# The 'ls' family (this assumes you use a recent GNU ls).
+#-------------------------------------------------------------
+
+alias ls='ls -G'	   # Colorize the ls output
+alias ll='ls -la'	   # Use a long listing format
+alias la="ls -aF"      # Show all files
+
+#-------------------------------------------------------------
+# Spelling typos - highly personnal and keyboard-dependent :-)
+#-------------------------------------------------------------
+
+## get rid of command not found ##
+alias cd..='cd ..'
+alias xs='cd'
+alias vf='cd'
+alias kk='ll'
+
+#-------------------------------------------------------------
+# File & strings related functions:
+#-------------------------------------------------------------
+
+# Finds a file with a pattern in name:
+function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
+
+# Handy Extract Program
+function extract()      
+{
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1     ;;
+            *.tar.gz)    tar xvzf $1     ;;
+            *.bz2)       bunzip2 $1      ;;
+            *.rar)       unrar x $1      ;;
+            *.gz)        gunzip $1       ;;
+            *.tar)       tar xvf $1      ;;
+            *.tbz2)      tar xvjf $1     ;;
+            *.tgz)       tar xvzf $1     ;;
+            *.zip)       unzip $1        ;;
+            *.Z)         uncompress $1   ;;
+            *.7z)        7z x $1         ;;
+            *)           echo "'$1' cannot be extracted via >extract<" ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+# Creates an archive (*.tar.gz) from given directory.
+function maketar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
+
+#-------------------------------------------------------------
+# Terminal functions:
+#-------------------------------------------------------------
+ 
+# customize the terminal prompt line:
+function git_prompt {
+    # if user is in a repository
+    git_status=$(git status 2> /dev/null)
+    if [ "$git_status" = "" ]; then
+        echo ''
+    else
+        # get branch name
+        branch_name=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
+        commit_status=$(git status 2>/dev/null | tail -n 1)
+        if [ "$commit_status" = "nothing to commit, working directory clean" ]; then
+            commit_status_summary="clean"
+        else
+            commit_status_summary="pending"
+        fi
+        echo "$branch_name:$commit_status_summary"
+    fi
+}
+ 
+function venv_prompt {
+    venv_strip=${VIRTUAL_ENV##*/} 
+    if [ "$venv_strip" = "" ]; then
+        echo ''
+    fi
+    echo ${VIRTUAL_ENV##*/} # this strips the path
+}
+ 
+function get_prompt {
+    
+    # get venv and git status
+    venv=$(venv_prompt)
+    git=$(git_prompt)
+    
+    # put them together
+    if [ "$venv" = "" ] && [ "$git" = "" ]; then
+        prompt=""
+    elif [ "$venv" = "" ]; then
+        prompt=$git
+    elif [ "$git" = "" ]; then
+        prompt=$venv
+    else
+        prompt="$venv:$git"
+    fi
+ 
+    # format the output
+    if [ "$prompt" = "" ]; then
+        echo ""
+    else
+        prompt=${prompt//')'/']'}
+        prompt=${prompt//'('/'['}
+        echo " ($prompt)"
+    fi
+ 
+}
+ 
+# run these functions before printing each prompt
+function prompt_command {
+    export PS1="\u@\h \w$(get_prompt) \$ "
+}
+
+export PROMPT_COMMAND=prompt_command

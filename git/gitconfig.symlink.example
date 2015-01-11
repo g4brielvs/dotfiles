@@ -1,0 +1,20 @@
+# Sample gitconfig
+#
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+        
+[core]
+        excludesfile = ~/.gitignore
+
+[credential]
+        helper = GIT_CREDENTIAL_HELPER
+                
+[hub]
+        protocol = https
+        
+[user]
+        name = AUTHORNAME
+        email = AUTHOREMAIL

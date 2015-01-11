@@ -1,0 +1,24 @@
+# Fix $PATH for homebrew
+homebrew=/usr/local/bin:/usr/local/sbin
+export PATH=$homebrew:$PATH
+
+# Set rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Dropbox/Coding
+source /usr/local/bin/virtualenvwrapper.sh
+
+# Vagrant
+export VAGRANT_DEFAULT_PROVIDER=parallels
+
+# Colors
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+# Load .bashrc if it exists
+test -f ~/.bashrc && source ~/.bashrc
+
+# Load .bash_aliases if it exists
+test -f ~/.bash_aliases && source ~/.bash_aliases
