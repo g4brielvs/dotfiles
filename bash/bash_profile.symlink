@@ -1,24 +1,74 @@
-# Fix $PATH for homebrew
-homebrew=/usr/local/bin:/usr/local/sbin
-export PATH=$homebrew:$PATH
+# -------------------------------------------------------------------
+# .bash_profile
+#
+#  This file is normally read by interactive shells only.
+#+ Here is the place to define your aliases, functions and
+#+ other interactive features like your prompt.
+#
+#  The choice of colors was done for a shell with a dark background
+#+ (white on black), and this is usually also suited for pure text-mode
+#+ consoles (no X server available). If you use a white background,
+#+ you'll have to do some other choices for readability.
+#
+# -------------------------------------------------------------------
+
+
+# -------------------------------------------------------------------
+# Source my bashrc file
+# -------------------------------------------------------------------
+
+# get the aliases and functions
+if [ -f ~/.bashrc ]; then
+. ~/.bashrc
+fi
+
+
+# -------------------------------------------------------------------
+# Build a PATH environment variable
+# -------------------------------------------------------------------
+
+# set PATH so it includes user's private bin if it exists
+if [ -d ~/bin ] ; then
+PATH="~/bin:${PATH}"
+fi
+
+# prepend /usr/local/bin to the head of the PATH to keep Homebrew happy
+if [ -d /usr/local/bin ] ; then
+PATH="/usr/local/bin:${PATH}"
+fi
+
+export PATH
+
+
+# -------------------------------------------------------------------
+# Build environment variables
+# -------------------------------------------------------------------
+
+# virtualenvwrapper
+if [ -x /usr/local/bin/virtualenvwrapper.sh ] ; then
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Dropbox/Coding
+source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# vagrant
+if [ -x /usr/bin/vagrant ] ; then
+export VAGRANT_DEFAULT_PROVIDER=parallels
+fi
+
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+
+
+# Specify Homebrew-cask options
+#export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/opt/homebrew-cask/Caskroom"
 
 # Set rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Dropbox/Coding
-source /usr/local/bin/virtualenvwrapper.sh
 
-# Vagrant
-export VAGRANT_DEFAULT_PROVIDER=parallels
 
-# Colors
-export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-# Load .bashrc if it exists
-test -f ~/.bashrc && source ~/.bashrc
 
-# Load .bash_aliases if it exists
-test -f ~/.bash_aliases && source ~/.bash_aliases
+
+
