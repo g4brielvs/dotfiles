@@ -17,8 +17,8 @@ $ cd ${PROJECT_HOME}/dotfiles
 $ ./bootstrap
 ```
 
-This will symlink the appropriate files in `dotfiles` to your home directory.
-Everything is configured and tweaked within `${PROJECT_HOME}/dotfiles`.
+This will symlink the appropriate files to your home directory.
+Everything is configured and tweaked within `dotfiles`.
 
 ## What's inside
 
