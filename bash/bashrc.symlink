@@ -48,9 +48,14 @@ alias ....='cd ../../../../'
 alias .....='cd ../../../../'
 
 
-alias ls="command ls ${colorflag}"	# Colorize the ls output
-alias ll='ls -la'	   				# Use a long listing format
-alias la="ls -aF"      				# Show all files
+# Colorize the ls output
+alias ls="command ls ${colorflag}"	
+
+# Use a long listing format
+alias ll='ls -la'	   				
+
+# Show all files
+alias la="ls -aF"      				
 
 #-------------------------------------------------------------
 # Spelling typos - highly personnal and keyboard-dependent:

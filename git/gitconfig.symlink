@@ -1,22 +1,24 @@
 [alias]
-        co = checkout
-        exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
-  
+	co = checkout
+	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
+
 [color]
-        diff = auto
-        status = auto
-        branch = auto
-        ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+
+[commit]
+	gpgsign = true
 
 [core]
-        excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore
 
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-	
+[url "git@github.com:"]
+	pushInsteadOf = git://github.com/
+	pushInsteadOf = https://github.com/
+
 [user]
-	name = Gabriel Vicente
+	name = g4brielvs
 	email = gabrielusvicente@gmail.com
-
+	signingkey = 9A48FE773550935A

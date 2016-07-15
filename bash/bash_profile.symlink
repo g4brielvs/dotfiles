@@ -47,24 +47,26 @@ export PATH
 # virtualenvwrapper
 if [ -x /usr/local/bin/virtualenvwrapper.sh ] ; then
 export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Dropbox/Coding
+export PROJECT_HOME=$HOME/Dropbox/Repositories
 source /usr/local/bin/virtualenvwrapper.sh
 fi
+
+# jenv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+export PATH="$HOME/.jenv/bin:$PATH"
+
+# rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH="$HOME/.rbenv/bin:$PATH"
 
 # vagrant
 if [ -x /usr/bin/vagrant ] ; then
 export VAGRANT_DEFAULT_PROVIDER=parallels
 fi
 
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
-
-
 # Specify Homebrew-cask options
-#export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/opt/homebrew-cask/Caskroom"
-
-# Set rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+#export HOMEBREW_CASK_OPTS="--appdir=~/Applications --caskroom=/opt/homebrew-cask/Caskroom"
+#export HOMEBREW_CASK_OPTS="--appdir=~/Applications --caskroom=~/Caskroom"
 
 
 
