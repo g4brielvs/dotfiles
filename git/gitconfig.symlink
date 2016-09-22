@@ -1,5 +1,4 @@
 [alias]
-	co = checkout
 	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
 
 [color]
@@ -13,6 +12,9 @@
 
 [core]
 	excludesfile = ~/.gitignore
+
+[gpg]
+	program = /usr/local/bin/gpg
 
 [url "git@github.com:"]
 	pushInsteadOf = git://github.com/

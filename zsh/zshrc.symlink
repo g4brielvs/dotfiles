@@ -101,6 +101,10 @@ export LC_ALL=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# -------------------------------------------------------------------
+# Build environment variables
+# -------------------------------------------------------------------
+
 # Homebrew
 #export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=/usr/local/Caskroom/"
 
@@ -119,6 +123,13 @@ fi
 # Anaconda3
 if [ -d $HOME/anaconda ] ; then
     export PATH="$HOME/anaconda/bin:$PATH"
+fi
+
+# Gurobi
+if [ -d /Library/gurobi651/mac64 ] ; then
+    export GUROBI_HOME="/Library/gurobi651/mac64"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+    export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
 fi
 
 # Jenv
@@ -147,11 +158,4 @@ fi
 # Vagrant
 if [ -x /usr/bin/vagrant ] ; then
     export VAGRANT_DEFAULT_PROVIDER=parallels
-fi
-
-# Gurobi
-if [ -d /Library/gurobi651/mac64 ] ; then
-    export GUROBI_HOME="/Library/gurobi651/mac64"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
-    export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
 fi
