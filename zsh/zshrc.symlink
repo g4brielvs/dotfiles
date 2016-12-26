@@ -57,16 +57,20 @@ ZSH_THEME="bullet-train"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    history
+    zsh-syntax-highlighting
     history-substring-search
+    common-aliases
+    osx
     brew
     git
-    pip
-    python
     vagrant
+    ruby
+    bundler
+    gem
+    python
+    pip
     virtualenv
-    virtalenvwrapper
-    zsh-syntax-highlighting)
+    virtalenvwrapper)
 
 # User configuration
 
@@ -121,12 +125,12 @@ if [ -x /usr/local/bin/virtualenvwrapper.sh ] ; then
 fi
 
 # Anaconda3
-if [ -d $HOME/anaconda ] ; then
-    export PATH="$HOME/anaconda/bin:$PATH"
+if [ -d /usr/local/anaconda3 ] ; then
+    export PATH="/usr/local/anaconda3/bin:$PATH"
 fi
 
 # Gurobi
-if [ -d /Library/gurobi651/mac64 ] ; then
+if [ -d /Library/gurobi701/mac64 ] ; then
     export GUROBI_HOME="/Library/gurobi651/mac64"
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
     export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
@@ -159,3 +163,12 @@ fi
 if [ -x /usr/bin/vagrant ] ; then
     export VAGRANT_DEFAULT_PROVIDER=parallels
 fi
+
+## Set up GPG Agent for SSH keys & git commit signing
+ export GPG_TTY=$(tty)
+ if [ -f "${HOME}/.gnupg/gpg-agent-info" ]; then
+   . "${HOME}/.gnupg/gpg-agent-info"
+   export GPG_AGENT_INFO
+   export SSH_AUTH_SOCK
+   export SSH_AGENT_PID
+ fi
