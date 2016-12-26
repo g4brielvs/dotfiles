@@ -7,3 +7,8 @@ Host uranus
     HostName 192.241.221.24
     User uranus
     IdentityFile ~/.ssh/uranus
+
+Host github.com
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/github
