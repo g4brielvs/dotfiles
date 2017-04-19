@@ -1,0 +1,34 @@
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle bundler
+antigen bundle common-aliases
+antigen bundle gem
+antigen bundle git
+antigen bundle git-extras
+antigen bundle pip
+antigen bundle python
+
+# zsh-users bundles.
+antigen bundles <<EOBUNDLES
+    zsh-users/zsh-autosuggestions
+    zsh-users/zsh-completions
+    zsh-users/zsh-history-substring-search
+    zsh-users/zsh-syntax-highlighting
+EOBUNDLES
+
+# Load the theme.
+antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+
+# Load OS specific bundles
+if [[ `uname` == "Darwin" ]]; then
+    antigen bundle brew
+    antigen bundle brew-cask
+    antigen bundle osx
+elif [[ `uname` == "Linux" ]]; then
+    antigen bundle debian
+fi
+
+# Tell antigen that you're done.
+antigen apply
