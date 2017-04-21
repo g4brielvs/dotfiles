@@ -12,7 +12,7 @@ something if I forget to make a check for a dependency.
 It's pretty straightforward. I personally created an environment variable `$REPO_HOME` pointing to my repo directory, but tailor it to your needs.
 
 ```sh
-$ git clone https://github.com/g4brielvs/dotfiles.git ${PROJECT_HOME}/dotfiles
+$ git clone https://github.com/g4brielvs/dotfiles.git ${REPO_HOME}/dotfiles
 $ cd ${REPO_HOME}/dotfiles
 $ ./setup
 ```
