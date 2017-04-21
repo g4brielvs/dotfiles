@@ -1,0 +1,106 @@
+#
+# Executes commands at the start of every session.
+#
+# Authors:
+#   g4brielvs <gabrielusvicente@gmail.com>
+#
+# -------------------------------------------------------------------
+# Build environment variables
+# -------------------------------------------------------------------
+
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+# Homebrew
+# The missing package manager for macOS
+# http://brew.sh
+# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=/usr/local/Caskroom/"
+
+# Rbenv
+# https://github.com/rbenv/rbenv
+if which rbenv > /dev/null; then
+    eval "$(rbenv init - zsh)"
+    #export PATH="$HOME/.rbenv/bin:$PATH"
+fi
+
+# Jenv
+# https://github.com/gcuisinier/jenv
+if which jenv > /dev/null; then
+    eval "$(jenv init - zsh)"
+    #export PATH="$HOME/.jenv/bin:$PATH"
+fi
+
+# Pyenv
+# https://github.com/yyuu/pyenv
+if which pyenv > /dev/null; then
+    eval "$(pyenv init - zsh)"
+    #export PATH="$HOME/.pyenv/bin:$PATH"
+# Pyenv virtualenv
+# https://github.com/yyuu/pyenv-virtualenv
+    eval "$(pyenv virtualenv-init - zsh)"
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+fi
+
+# Virtualenvwrapper
+# https://virtualenvwrapper.readthedocs.io/en/latest/
+if [ -x /usr/local/bin/virtualenvwrapper.sh ] ; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# Anaconda3
+# https://www.continuum.io/downloads
+if [ -d /usr/local/anaconda3 ] ; then
+    export PATH="/usr/local/anaconda3/bin:$PATH"
+fi
+
+# Vagrant
+# https://www.vagrantup.com
+#if [ -x /usr/bin/vagrant ] ; then
+#    export VAGRANT_DEFAULT_PROVIDER=parallels
+#fi
+
+# Docker
+# https://www.docker.com
+#if which docker > /dev/null; then
+#    eval "$(docker-machine env default)"
+#fi
+
+# Gurobi
+# http://www.gurobi.com
+if [ -d /Library/gurobi702/mac64 ] ; then
+    export GUROBI_HOME="/Library/gurobi702/mac64"
+    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+    export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
+fi
+
+ # thefuck
+ # https://github.com/nvbn/thefuck
+ if which fuck > /dev/null; then
+     eval "$(thefuck --alias)"
+ fi
+
+ # -------------------------------------------------------------------
+ # Bullet Train for oh-my-zsh
+ # https://github.com/caiogondim/bullet-train.zsh
+ # -------------------------------------------------------------------
+
+BULLETTRAIN_DIR_EXTENDED=0
+
+BULLETTRAIN_PROMPT_ORDER=(
+    time
+    cmd_exec_time
+    status
+    custom
+#    context
+    dir
+    perl
+#    ruby
+    virtualenv
+#    nvm
+    go
+    elixir
+    git
+    hg
+)

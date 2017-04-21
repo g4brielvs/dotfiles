@@ -2,94 +2,8 @@
 # Executes commands at the start of an interactive session.
 #
 # Authors:
-#   Gabriel Vicente <gabrielusvicente@gmail.com>
+#   g4brielvs <gabrielusvicente@gmail.com>
 #
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-#plugins=()
-
-# User configuration
-
-#export PATH=$HOME/bin:/usr/local/bin:$PATH
-#export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
 # -------------------------------------------------------------------
 # Antigen
 # https://github.com/zsh-users/antigen
@@ -106,9 +20,6 @@ export LC_ALL=en_US.UTF-8
 #else
 #    # If there is no cache available do load and execute antigen
 #    source /usr/local/share/antigen/antigen.zsh
-#
-#    # I'm using antigen-init here but your usual antigen-bundle,
-#    # antigen-theme, antigen-apply will work as well
 #    antigen init ${HOME}/.antigenrc
 #fi
 
@@ -116,83 +27,10 @@ source /usr/local/share/antigen/antigen.zsh
 antigen init ${HOME}/.antigenrc
 
 # -------------------------------------------------------------------
-# Build environment variables
+# GPG
+#
 # -------------------------------------------------------------------
 
-#export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-#export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-
-# Homebrew
-# The missing package manager for macOS
-# http://brew.sh
-# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-#export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=/usr/local/Caskroom/"
-
-# Vagrant
-# https://www.vagrantup.com
-#if [ -x /usr/bin/vagrant ] ; then
-#    export VAGRANT_DEFAULT_PROVIDER=parallels
-#fi
-
-# Docker
-# https://www.docker.com
-if which docker > /dev/null; then
-#    eval "$(docker-machine env default)"
-fi
-
-# the fuck
-# https://github.com/nvbn/thefuck
-if which fuck > /dev/null; then
-    eval "$(thefuck --alias)"
-fi
-
-# Rbenv
-# https://github.com/rbenv/rbenv
-if which rbenv > /dev/null; then
-    eval "$(rbenv init - zsh)"
-    #export PATH="$HOME/.rbenv/bin:$PATH"
-fi
-
-# Jenv
-# https://github.com/gcuisinier/jenv
-if which jenv > /dev/null; then
-    eval "$(jenv init - zsh)"
-    #export PATH="$HOME/.jenv/bin:$PATH"
-fi
-
-# Pyenv
-# https://github.com/yyuu/pyenv
-if which pyenv > /dev/null; then
-    eval "$(pyenv init - zsh)"
-    #export PATH="$HOME/.pyenv/bin:$PATH"
-# Pyenv virtualenv
-# https://github.com/yyuu/pyenv-virtualenv
-    eval "$(pyenv virtualenv-init - zsh)"
-    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-fi
-
-# Virtualenvwrapper
-# https://virtualenvwrapper.readthedocs.io/en/latest/
-if [ -x /usr/local/bin/virtualenvwrapper.sh ] ; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
-# Anaconda3
-# https://www.continuum.io/downloads
-if [ -d /usr/local/anaconda3 ] ; then
-    export PATH="/usr/local/anaconda3/bin:$PATH"
-fi
-
-# Gurobi
-# http://www.gurobi.com
-if [ -d /Library/gurobi702/mac64 ] ; then
-    export GUROBI_HOME="/Library/gurobi702/mac64"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
-    export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
-fi
-
-# GPG
 # Set up GPG Agent for SSH keys & git commit signing
 # https://gpgtools.org
  export GPG_TTY=$(tty)
