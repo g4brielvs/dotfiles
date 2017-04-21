@@ -28,7 +28,7 @@ fail () {
 }
 
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.symlink ]
+  if ! [ -f src/gitconfig.symlink ]
   then
     info 'setup gitconfig'
 
