@@ -8,6 +8,9 @@
 # Build environment variables
 # -------------------------------------------------------------------
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
@@ -69,8 +72,8 @@ fi
 
 # Gurobi
 # http://www.gurobi.com
-if [ -d /Library/gurobi702/mac64 ] ; then
-    export GUROBI_HOME="/Library/gurobi702/mac64"
+if [ -d /Library/gurobi751/mac64 ] ; then
+    export GUROBI_HOME="/Library/gurobi751/mac64"
     export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
     export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
 fi
@@ -96,9 +99,9 @@ BULLETTRAIN_PROMPT_ORDER=(
 #    context
     dir
     perl
-#    ruby
+    ruby
     virtualenv
-#    nvm
+    nvm
     go
     elixir
     git
