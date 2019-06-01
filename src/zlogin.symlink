@@ -30,18 +30,18 @@ export LANG=en_US.UTF-8
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=/usr/local/Caskroom/"
 
+# Jenv
+# https://github.com/gcuisinier/jenv
+#if which jenv > /dev/null; then
+#    eval "$(jenv init - zsh)"
+#    export PATH="$HOME/.jenv/bin:$PATH"
+#fi
+
 # Rbenv
 # https://github.com/rbenv/rbenv
 if which rbenv > /dev/null; then
     eval "$(rbenv init - zsh)"
     export PATH="$HOME/.rbenv/bin:$PATH"
-fi
-
-# Jenv
-# https://github.com/gcuisinier/jenv
-if which jenv > /dev/null; then
-    eval "$(jenv init - zsh)"
-    #export PATH="$HOME/.jenv/bin:$PATH"
 fi
 
 # Pyenv
@@ -57,8 +57,11 @@ if which pyenv > /dev/null; then
 fi
 
 # Pipenv
-VIRTUAL_ENV_DISABLE_PROMPT=true
+# https://github.com/pypa/pipenv
+#export PIPENV_VENV_IN_PROJECT=false
 
+# automatically run "pipenv shell" if we enter a pipenv project subdirectory
+# if opening a new terminal, preserve the source directory
 activate(){
     activate_file=$(pipenv --venv)/bin/activate
     if [ -e "$activate_file" ]; then
@@ -81,6 +84,7 @@ if [ -x /usr/local/bin/virtualenvwrapper.sh ] ; then
     export WORKON_HOME=$HOME/.virtualenvs
     source /usr/local/bin/virtualenvwrapper.sh
 fi
+#export VIRTUAL_ENV_DISABLE_PROMPT=true
 
 # Anaconda3
 # https://www.continuum.io/downloads
@@ -91,7 +95,7 @@ fi
 # Vagrant
 # https://www.vagrantup.com
 #if [ -x /usr/bin/vagrant ] ; then
-    export VAGRANT_DEFAULT_PROVIDER=parallels
+#    export VAGRANT_DEFAULT_PROVIDER=parallels
 #fi
 
 # Docker
@@ -102,40 +106,8 @@ fi
 
 # Gurobi
 # http://www.gurobi.com
-if [ -d /Library/gurobi751/mac64 ] ; then
-    export GUROBI_HOME="/Library/gurobi751/mac64"
-    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
-    export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
-fi
-
- # thefuck
- # https://github.com/nvbn/thefuck
- if which fuck > /dev/null; then
-     eval "$(thefuck --alias)"
- fi
-
- # -------------------------------------------------------------------
- # Bullet Train for oh-my-zsh
- # https://github.com/caiogondim/bullet-train.zsh
- # -------------------------------------------------------------------
-
- # automatically run "pipenv shell" if we enter a pipenv project subdirectory
- # if opening a new terminal, preserve the source directory
- #export PIPENV_VENV_IN_PROJECT=false
-
-BULLETTRAIN_VIRTUALENV_PREFIX="🐍"
-BULLETTRAIN_RUBY_PREFIX="♢"
-BULLETTRAIN_DIR_EXTENDED=false
-BULLETTRAIN_PROMPT_ORDER=(
-    time
-    cmd_exec_time
-    status
-    custom
-    dir
-    perl
-    virtualenv
-    go
-    elixir
-    git
-    hg
-)
+#if [ -d /Library/gurobi751/mac64 ] ; then
+#    export GUROBI_HOME="/Library/gurobi751/mac64"
+#    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
+#    export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
+#fi
