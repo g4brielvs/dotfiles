@@ -1,7 +1,5 @@
 # dotbot
 
-# Dotfiles
-
 Dotfiles are configuration files used to customize and personalize your Unix-based system. These files are typically hidden, meaning their filenames start with a dot (e.g., `.bashrc`, `.vimrc`). This README will help you understand what dotfiles are, how to manage them, and provide some best practices for maintaining and sharing your dotfiles.
 
 ## Table of Contents
