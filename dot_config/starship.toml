@@ -1,0 +1,42 @@
+#format = "$all"
+
+format = """
+$username\
+$hostname\
+$localip\
+$shlvl\
+$kubernetes\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$python\
+$nix_shell\
+$memory_usage\
+$aws\
+$azure\
+$env_var\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$time\
+$status\
+$shell\
+$character"""
+
+command_timeout = 10000
+
+[git_branch]
+symbol = " "
+ignore_branches = ["master", "main"]
+
+[python]
+symbol = " "
+format = 'with [${symbol}${pyenv_prefix}${version} ($virtualenv)]($style) '
+style = "bold green"
