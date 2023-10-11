@@ -2,13 +2,15 @@
 antigen use oh-my-zsh
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle bundler
-antigen bundle common-aliases
-antigen bundle gem
-antigen bundle git
-antigen bundle git-extras
-antigen bundle pip
-antigen bundle python
+antigen bundles <<EOBUNDLES
+    common-aliases
+    docker
+    gitignore
+    pip
+    #pipenv
+    pyenv
+    python
+EOBUNDLES
 
 # zsh-users bundles.
 antigen bundles <<EOBUNDLES
@@ -18,8 +20,12 @@ antigen bundles <<EOBUNDLES
     zsh-users/zsh-syntax-highlighting
 EOBUNDLES
 
+antigen bundle zdharma/fast-syntax-highlighting
+
 # Load the theme.
-antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+#antigen theme https://github.com/agnoster/agnoster-zsh-theme.git
+#antigen theme https://github.com/caiogondim/bullet-train-oh-my-zsh-theme bullet-train
+antigen theme https://github.com/dracula/zsh.git
 
 # Load OS specific bundles
 if [[ `uname` == "Darwin" ]]; then
