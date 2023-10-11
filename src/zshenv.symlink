@@ -1,0 +1,12 @@
+#
+# Executes commands at the start of every session.
+#
+# Authors:
+#   g4brielvs <github@g4brielvs.me>
+#
+# -------------------------------------------------------------------
+# Build environment variables
+# -------------------------------------------------------------------
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
