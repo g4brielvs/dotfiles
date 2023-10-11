@@ -1,5 +1,5 @@
-[alias]
-	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
+[core]
+	excludesfile = ~/.gitignore
 
 [color]
 	diff = auto
@@ -10,17 +10,22 @@
 [commit]
 	gpgsign = true
 
-[core]
-	excludesfile = ~/.gitignore
-
 [gpg]
-	program = /usr/local/bin/gpg
+	format = ssh
 
-[url "git@github.com:"]
-	pushInsteadOf = git://github.com/
-	pushInsteadOf = https://github.com/
+[gpg "ssh"]
+  	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[http]
+	postBuffer = 1048576000
 
 [user]
-	name = g4brielvs
-	email = g4brielvs@g4brielvs.me
-	signingkey = E8B8E56C8DE0FB55
+	name = Gabriel Stefanini Vicente
+	email = gvicente@worldbank.org
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbkeqMvo4xqY99md0MCUwcSAYB0mRONgU51P8kiEkUF
