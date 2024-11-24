@@ -8,7 +8,7 @@
 	gpgsign = true
 
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/gitignore
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -25,6 +25,9 @@
 [http]
 	postBuffer = 1048576000
 
+[init]
+	defaultBranch = main
+
 [url "git@github.com:"]
     insteadOf = https://github.com/
 
@@ -32,3 +35,4 @@
 	name = Gabriel Stefanini Vicente
 	email = git@g4brielvs.me
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbkeqMvo4xqY99md0MCUwcSAYB0mRONgU51P8kiEkUF
+
