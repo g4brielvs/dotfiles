@@ -1,5 +1,8 @@
 # Dotfiles
 
+[![CalVer](https://img.shields.io/badge/calver-YY.0M.MICRO-22bfda.svg)](https://calver.org)
+[![GitHub Release](https://img.shields.io/github/v/release/worldbank/template)](https://github.com/g4brielvs/dotfiles/releases)
+
 This repository contains my dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 
 ## Quick Start
