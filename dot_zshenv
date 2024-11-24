@@ -2,11 +2,33 @@
 # Executes commands at the start of every session.
 #
 # Authors:
-#   g4brielvs <github@g4brielvs.me>
+#   g4brielvs <git@g4brielvs.me>
 #
+
+# -------------------------------------------------------------------
+# Homebrew
+# -------------------------------------------------------------------
+export PATH="/opt/homebrew/bin:$PATH"
+
+# -------------------------------------------------------------------
+# Apache Spark
+# -------------------------------------------------------------------
+export SPARK_HOME="$(brew --prefix apache-spark)/libexec"
+export PATH="$SPARK_HOME/bin/:$PATH"
+
 # -------------------------------------------------------------------
 # Build environment variables
 # -------------------------------------------------------------------
-
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# -------------------------------------------------------------------
+# Compiler and Linker Flags
+# -------------------------------------------------------------------
+export CFLAGS="-I$(brew --prefix xz)/include"
+export LDFLAGS="-L$(brew --prefix xz)/lib"
+
+# -------------------------------------------------------------------
+# Package Config Paths
+# -------------------------------------------------------------------
+export PKG_CONFIG_PATH="$(brew --prefix)/lib/pkgconfig:$PKG_CONFIG_PATH"
