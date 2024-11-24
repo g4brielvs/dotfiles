@@ -2,7 +2,7 @@
 
 set -eufo pipefail
 
-if [ ! -f "$HOMEBREW_BUNDLE_FILE_GLOBAL" ]; then
+if [ ! -f $HOMEBREW_BUNDLE_FILE_GLOBAL ]; then
     echo "Brewfile not found at $BREWFILE"
     exit 1
 fi

@@ -12,8 +12,6 @@
 if [[ -f ${HOME}/.antigen/.cache/.zcache-payload ]]; then
     # Load bundles statically
     source ${HOME}/.antigen/.cache/.zcache-payload
-
-    # Load completion system
     autoload -Uz compinit
     compinit -d ${HOME}/.zcompdump
 else
@@ -25,11 +23,8 @@ fi
 # -------------------------------------------------------------------
 # Homebrew
 # -------------------------------------------------------------------
-
-# Set paths and options for Homebrew
 export HOMEBREW_BUNDLE_FILE_GLOBAL=$HOME/.config/brew/Brewfile
 export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=$(brew --prefix)/Caskroom/"
-#export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=$(brew --prefix)/Caskroom/"
 
 # Add GNU tools to PATH if needed
 PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
@@ -53,7 +48,6 @@ source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.
 # -------------------------------------------------------------------
 # Python
 # -------------------------------------------------------------------
-
 # pyenv (https://github.com/pyenv/pyenv)
 # pyenv-virtualenv (https://github.com/pyenv/pyenv-virtualenv)
 if command -v pyenv > /dev/null; then
@@ -68,7 +62,6 @@ fi
 # -------------------------------------------------------------------
 # Ruby
 # -------------------------------------------------------------------
-
 # rbenv (https://github.com/rbenv/rbenv)
 if which rbenv > /dev/null; then
     eval "$(rbenv init - zsh)"
@@ -85,3 +78,8 @@ export PATH="$(brew --prefix)/opt/rustup/bin:$PATH"
 # -------------------------------------------------------------------
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 eval "$(starship init zsh)"
+
+# -------------------------------------------------------------------
+# ZSH
+# -------------------------------------------------------------------
+export DISABLE_AUTO_UPDATE=true
