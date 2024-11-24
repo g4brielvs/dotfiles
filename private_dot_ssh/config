@@ -1,14 +1,2 @@
-Host gaia
-    HostName 192.168.0.4
-    User gaia
-    IdentityFile ~/.ssh/gaia
-
-Host uranus
-    HostName 192.241.221.24
-    User uranus
-    IdentityFile ~/.ssh/uranus
-
 Host github.com
-    AddKeysToAgent yes
-    UseKeychain yes
-    IdentityFile ~/.ssh/github
+ IdentityAgent "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
