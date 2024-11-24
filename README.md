@@ -16,4 +16,4 @@ Contributions to this repository are welcome! If you have any improvements, sugg
 
 ## License
 
-This project is licensed under the [MIT License](https://opensource.org/license/mit). See the [LICENSE](LICENSE) file for details.
+This project is licensed under the [GPLv3](https://www.gnu.org/licenses/gpl-3.0.en.html). See the [LICENSE](LICENSE) file for details.
