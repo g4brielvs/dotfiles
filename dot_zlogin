@@ -2,14 +2,11 @@
 # Executes commands at the start of every session.
 #
 # Authors:
-#   g4brielvs <github@g4brielvs.me>
+#   g4brielvs <git@g4brielvs.me>
 #
-# -------------------------------------------------------------------
-# Build environment variables
-# -------------------------------------------------------------------
 
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+# Environment variables
+# -------------------------------------------------------------------
 
 # Vagrant
 # https://www.vagrantup.com
@@ -30,9 +27,3 @@ export LANG=en_US.UTF-8
 #    export LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${GUROBI_HOME}/lib"
 #    export GRB_LICENSE_FILE="$HOME/.gurobi/gurobi.lic"
 #fi
-
-# Scikit-learn
-export SCIKIT_LEARN_DATA="$HOME/data/scikit_learn_data/"
-
-# Spacy
-export SPACY_DATA_DIR="$HOME/data/spacy_data/"
