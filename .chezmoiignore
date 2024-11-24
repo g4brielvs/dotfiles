@@ -1,11 +1,3 @@
 README.md
 LICENSE
-install.sh
-
-*.txt   # ignore *.txt in the target directory
-*/*.txt # ignore *.txt in subdirectories of the target directory
-        # but not in subdirectories of subdirectories;
-        # so a/b/c.txt would *not* be ignored
-
-src   # ignore the backups folder, but not its contents
-src/** # ignore the contents of backups folder but not the folder itself
+.pre-commit-config.yml

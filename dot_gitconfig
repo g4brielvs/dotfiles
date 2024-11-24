@@ -27,7 +27,7 @@
 
 [url "git@github.com:"]
     insteadOf = https://github.com/
-	
+
 [user]
 	name = Gabriel Stefanini Vicente
 	email = git@g4brielvs.me
