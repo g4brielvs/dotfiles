@@ -16,12 +16,6 @@
 	process = git-lfs filter-process
 	required = true
 
-[gpg]
-	format = ssh
-
-[gpg "ssh"]
-  	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
 [http]
 	postBuffer = 1048576000
 
@@ -36,3 +30,11 @@
 	email = git@g4brielvs.me
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbkeqMvo4xqY99md0MCUwcSAYB0mRONgU51P8kiEkUF
 
+[gpg]
+	format = ssh
+{{ if eq .chezmoi.os "darwin" }}
+[gpg "ssh"]
+  	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+{{ else }}
+  	program = "/usr/bin/ssh-keygen"
+{{ end }}
