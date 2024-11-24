@@ -2,10 +2,10 @@
 
 set -eufo pipefail
 
-if [ ! -f "$HOMEBREW_BUNDLE_FILE_GLOBAL" ]; then
+if [ ! -f $HOMEBREW_BUNDLE_FILE_GLOBAL ]; then
     echo "Brewfile not found at $BREWFILE"
     exit 1
 fi
 
 # Install packages
-brew bundle --no-lock --file="$HOMEBREW_BUNDLE_FILE_GLOBAL"
+brew bundle --no-lock --file=$HOMEBREW_BUNDLE_FILE_GLOBAL

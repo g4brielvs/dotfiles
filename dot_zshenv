@@ -21,6 +21,8 @@ export PATH="$SPARK_HOME/bin/:$PATH"
 # -------------------------------------------------------------------
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_CONFIG_HOME=$HOME/.config
 
 # -------------------------------------------------------------------
 # Compiler and Linker Flags
@@ -32,3 +34,9 @@ export LDFLAGS="-L$(brew --prefix xz)/lib"
 # Package Config Paths
 # -------------------------------------------------------------------
 export PKG_CONFIG_PATH="$(brew --prefix)/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+# Scikit-learn
+export SCIKIT_LEARN_DATA="$HOME/data/scikit_learn_data/"
+
+# Spacy
+export SPACY_DATA_DIR="$HOME/data/spacy_data/"
