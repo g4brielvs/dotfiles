@@ -35,13 +35,13 @@ OPENWINHOME="/usr/X11"
 PATHPOSTPEND=""
 esac
 
-# interactive option 
+# interactive option
 alias rm='rm -i'
 alias rmf='rm -rf'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# a quick way to get out of current directory 
+# a quick way to get out of current directory
 alias ..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
@@ -49,19 +49,19 @@ alias .....='cd ../../../../'
 
 
 # Colorize the ls output
-alias ls="command ls ${colorflag}"	
+alias ls="command ls ${colorflag}"
 
 # Use a long listing format
-alias ll='ls -la'	   				
+alias ll='ls -la'
 
 # Show all files
-alias la="ls -aF"      				
+alias la="ls -aF"
 
 #-------------------------------------------------------------
 # Spelling typos - highly personnal and keyboard-dependent:
 #-------------------------------------------------------------
 
-# get rid of command not found 
+# get rid of command not found
 alias cd..='cd ..'
 alias xs='cd'
 alias vf='cd'
@@ -78,7 +78,7 @@ HISTSIZE=1000 # size of the run-time history list
 HISTIGNORE=ls:ll:la:l:cd:pwd:exit:mc:su:df:clear # do not put these in history file
 
 # export settings
-export HISTCONTROL HISTFILESIZE HISTSIZE HISTIGNORE 
+export HISTCONTROL HISTFILESIZE HISTSIZE HISTIGNORE
 
 #-------------------------------------------------------------
 # File & strings functions:
@@ -88,7 +88,7 @@ export HISTCONTROL HISTFILESIZE HISTSIZE HISTIGNORE
 function ff() { find . -type f -iname '*'"$*"'*' -ls ; }
 
 # Handy Extract Program
-function extract()      
+function extract()
 {
     if [ -f $1 ] ; then
         case $1 in
@@ -135,9 +135,9 @@ function prompt {
   local WHITE="\[\033[0;37m\]"
   local WHITEBOLD="\[\033[1;37m\]"
   local RESETCOLOR="\[\e[00m\]"
- 
 
-#function to parse git branch 
+
+#function to parse git branch
 function new_parse_git_branch() {
     br=$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/')
     if [ "$br" == "(no branch)" ]; then

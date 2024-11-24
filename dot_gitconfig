@@ -1,6 +1,3 @@
-[core]
-	excludesfile = ~/.gitignore
-
 [color]
 	diff = auto
 	status = auto
@@ -10,11 +7,8 @@
 [commit]
 	gpgsign = true
 
-[gpg]
-	format = ssh
-
-[gpg "ssh"]
-  	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+[core]
+	excludesfile = ~/.gitignore
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -22,10 +16,19 @@
 	process = git-lfs filter-process
 	required = true
 
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+  	program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
 [http]
 	postBuffer = 1048576000
 
+[url "git@github.com:"]
+    insteadOf = https://github.com/
+
 [user]
 	name = Gabriel Stefanini Vicente
-	email = gvicente@worldbank.org
+	email = git@g4brielvs.me
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJbkeqMvo4xqY99md0MCUwcSAYB0mRONgU51P8kiEkUF

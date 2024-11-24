@@ -1,76 +1,60 @@
 # -------------------------------------------------------------------
 # .bash_profile
 #
-#  This file is normally read by interactive shells only.
-#+ Here is the place to define your aliases, functions and
-#+ other interactive features like your prompt.
+#  This file is read by interactive shells. Define your aliases,
+#  functions, and interactive features like your prompt here.
 #
-#  The choice of colors was done for a shell with a dark background
-#+ (white on black), and this is usually also suited for pure text-mode
-#+ consoles (no X server available). If you use a white background,
-#+ you'll have to do some other choices for readability.
-#
+#  The colors are chosen for a dark background (white on black).
+#  If you use a light background, adjust the colors for readability.
 # -------------------------------------------------------------------
 
-
 # -------------------------------------------------------------------
-# Source my bashrc file
+# Source .bashrc for aliases and functions
 # -------------------------------------------------------------------
-
-# get the aliases and functions
 if [ -f ~/.bashrc ]; then
-. ~/.bashrc
+    . ~/.bashrc
 fi
 
-
 # -------------------------------------------------------------------
-# Build a PATH environment variable
+# Build PATH environment variable
 # -------------------------------------------------------------------
 
-# set PATH so it includes user's private bin if it exists
-if [ -d ~/bin ] ; then
-PATH="~/bin:${PATH}"
+# Add user's private bin directory if it exists
+if [ -d ~/bin ]; then
+    PATH="~/bin:${PATH}"
 fi
 
-# prepend /usr/local/bin to the head of the PATH to keep Homebrew happy
-if [ -d /usr/local/bin ] ; then
-PATH="/usr/local/bin:${PATH}"
+# Add /usr/local/bin to the beginning of PATH (Homebrew compatibility)
+if [ -d /usr/local/bin ]; then
+    PATH="/usr/local/bin:${PATH}"
 fi
 
-export PATH
-
-
 # -------------------------------------------------------------------
-# Build environment variables
+# Environment-specific configurations
 # -------------------------------------------------------------------
 
 # virtualenvwrapper
-if [ -x /usr/local/bin/virtualenvwrapper.sh ] ; then
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Dropbox/Repositories
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -x /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Dropbox/Repositories
+    source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-# jenv
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-export PATH="$HOME/.jenv/bin:$PATH"
-
-# rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-# vagrant
-if [ -x /usr/bin/vagrant ] ; then
-export VAGRANT_DEFAULT_PROVIDER=parallels
+# jenv (Java version manager)
+if command -v jenv > /dev/null; then
+    eval "$(jenv init -)"
+    export PATH="$HOME/.jenv/bin:$HOME/.rbenv/bin:${PATH}"
 fi
 
-# Specify Homebrew-cask options
-#export HOMEBREW_CASK_OPTS="--appdir=~/Applications --caskroom=/opt/homebrew-cask/Caskroom"
-#export HOMEBREW_CASK_OPTS="--appdir=~/Applications --caskroom=~/Caskroom"
+# rbenv (Ruby version manager)
+if command -v rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+fi
 
+# Vagrant
+if [ -x /usr/bin/vagrant ]; then
+    export VAGRANT_DEFAULT_PROVIDER=parallels
+fi
 
-
-
-
-
-
+# Specify Homebrew Cask options
+export HOMEBREW_CASK_OPTS="--appdir=~/Applications --caskroom=~/Caskroom"
