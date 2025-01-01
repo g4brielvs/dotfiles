@@ -20,12 +20,6 @@ else
     antigen init ${HOME}/.antigenrc
 fi
 
-# -------------------------------------------------------------------
-# Homebrew
-# -------------------------------------------------------------------
-export HOMEBREW_BUNDLE_FILE_GLOBAL=$HOME/.config/brew/Brewfile
-export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=$(brew --prefix)/Caskroom/"
-
 # Add GNU tools to PATH if needed
 PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="$(brew --prefix)/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -78,6 +72,18 @@ export PATH="$(brew --prefix)/opt/rustup/bin:$PATH"
 # -------------------------------------------------------------------
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 eval "$(starship init zsh)"
+
+# -------------------------------------------------------------------
+# Apache Spark
+# -------------------------------------------------------------------
+export SPARK_HOME="$(brew --prefix apache-spark)/libexec"
+export PATH="$SPARK_HOME/bin/:$PATH"
+
+# Scikit-learn
+export SCIKIT_LEARN_DATA="$HOME/data/scikit_learn_data/"
+
+# Spacy
+export SPACY_DATA_DIR="$HOME/data/spacy_data/"
 
 # -------------------------------------------------------------------
 # ZSH

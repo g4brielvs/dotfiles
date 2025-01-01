@@ -6,37 +6,17 @@
 #
 
 # -------------------------------------------------------------------
-# Homebrew
+# Environment variables
 # -------------------------------------------------------------------
-export PATH="/opt/homebrew/bin:$PATH"
-
-# -------------------------------------------------------------------
-# Apache Spark
-# -------------------------------------------------------------------
-export SPARK_HOME="$(brew --prefix apache-spark)/libexec"
-export PATH="$SPARK_HOME/bin/:$PATH"
-
-# -------------------------------------------------------------------
-# Build environment variables
-# -------------------------------------------------------------------
-export LC_ALL=en_US.UTF-8
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"  
 export LANG=en_US.UTF-8
-export XDG_DATA_HOME=$HOME/.local/share
+export LC_ALL=en_US.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
 
 # -------------------------------------------------------------------
-# Compiler and Linker Flags
+# Homebrew    
 # -------------------------------------------------------------------
-export CFLAGS="-I$(brew --prefix xz)/include"
-export LDFLAGS="-L$(brew --prefix xz)/lib"
-
-# -------------------------------------------------------------------
-# Package Config Paths
-# -------------------------------------------------------------------
-export PKG_CONFIG_PATH="$(brew --prefix)/lib/pkgconfig:$PKG_CONFIG_PATH"
-
-# Scikit-learn
-export SCIKIT_LEARN_DATA="$HOME/data/scikit_learn_data/"
-
-# Spacy
-export SPACY_DATA_DIR="$HOME/data/spacy_data/"
+export HOMEBREW_BREWFILE=$XDG_CONFIG_HOME/brewfile/Brewfile
+export HOMEBREW_BUNDLE_FILE_GLOBAL=$HOMEBREW_BREWFILE
+export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications --caskroom=$(brew --prefix)/Caskroom/"

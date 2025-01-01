@@ -6,7 +6,6 @@ antigen bundles <<EOBUNDLES
     common-aliases
     gitignore
     pip
-    pipenv
     pyenv
     python
 EOBUNDLES
